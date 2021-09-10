@@ -18,6 +18,11 @@ class FrontController extends Controller
     public function pickpointShow($id)
     {
         $cars = Car::where('pickpoint_id',$id)->where('booked', false)->get();
+        foreach ($cars as $car)
+        {
+            $car->book_id = "http://testapp/pickpoint/car/" . "$car->id";
+        }
+
         return view('front.pickpoint', compact('cars'));
     }
 

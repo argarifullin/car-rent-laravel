@@ -26,6 +26,8 @@
                                 <tr>
                                     <th style="width: 10px">ID</th>
                                     <th>Model</th>
+                                    <th>Name</th>
+                                    <th>Year</th>
                                     <th>Address</th>
                                     <th style="width: 100px; text-align: center">Edit</th>
                                     <th style="width: 100px; text-align: center">Delete</th>
@@ -41,6 +43,12 @@
                                     </td>
                                     <td style="vertical-align: middle">
                                         <h5>{{$car->model}}</h5>
+                                    </td>
+                                    <td style="vertical-align: middle">
+                                        <h5>{{$car->name}}</h5>
+                                    </td>
+                                    <td style="vertical-align: middle">
+                                        <h5>{{$car->year}}</h5>
                                     </td>
                                     <td style="vertical-align: middle">
                                         <h5>{{$car->pickpoint->address}}</h5>

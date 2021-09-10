@@ -5,7 +5,6 @@ namespace App\Jobs;
 use App\Models\Car;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -35,20 +34,6 @@ class UnbookCarJob implements ShouldQueue
      */
     public function handle()
     {
-        $cars = Car::where('booked', true)->where('ocupied',false)->get();
-        foreach ($cars as $car)
-        {
-            if ($car->booked_until < Carbon::now())
-            {
-                $car->booked = false;
-                $car->booked_until = null;
-                $car->save();
-            }
-
-        }
-
-
-
-        logs()->warning(" working");
+        Car::where('booked', true)->where('ocupied',false)->update(['booked' => false, 'booked_until' => null]);
     }
 }

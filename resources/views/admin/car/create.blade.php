@@ -12,13 +12,32 @@
 
                         </div>
                         <div class="card-body">
-                            <form method="post" action="{{route('car.store')}}">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul class="list-unstyled">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <form method="post" action="{{route('car.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
 
                                     <div class="form-group">
                                         <label for="model">Model</label>
                                         <input type="text" class="form-control" name="model" placeholder="Enter model">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" name="name" placeholder="Enter name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="model">Year</label>
+                                        <input type="text" class="form-control" name="year" placeholder="Enter year">
                                     </div>
 
                                     <div class="form-group">
@@ -29,8 +48,14 @@
                                             <option name="pickpoint_id" data-select2-id="3" value="{{$pickpoint->id}}">{{$pickpoint->address}}</option>
                                             @endforeach
                                         </select>
-
                                     </div>
+
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Upload image</label>
+                                            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
+                                    </form>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Add car</button>

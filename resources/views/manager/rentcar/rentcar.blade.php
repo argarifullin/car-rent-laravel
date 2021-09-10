@@ -31,7 +31,7 @@
                                         <select name="bookedcar_id" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                             <option selected="selected" data-select2-id="3">Chose car to rent</option>
                                             @foreach($bookedcars as $car)
-                                                <option name="bookedcar_id" data-select2-id="3" value="{{$car->id}}">{{$car->model}}</option>
+                                                <option name="bookedcar_id" data-select2-id="3" value="{{$car->id}}">{{$car->model}} - {{$car->name}} - {{$car->year}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -46,7 +46,7 @@
                                         <select name="car_id" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                             <option selected="selected" data-select2-id="3">Chose car to rent</option>
                                             @foreach($cars as $car)
-                                            <option name="car_id" data-select2-id="3" value="{{$car->id}}">{{$car->model}}</option>
+                                            <option name="car_id" data-select2-id="3" value="{{$car->id}}">{{$car->model}} - {{$car->name}} - {{$car->year}}</option>
                                             @endforeach
                                         </select>
                                     </div>

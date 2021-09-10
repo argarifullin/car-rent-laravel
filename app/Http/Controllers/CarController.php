@@ -24,9 +24,16 @@ class CarController extends Controller
 
     public function store(Request $request)
     {   $request->validate([
-        'model' => 'required'
+        'model' => 'required',
+        'pickpoint_id' => 'required|numeric',
+        'year' => 'required|numeric',
+        'image' => 'required|image'
         ]);
-        $car = Car::create($request->all());
+
+        $data = $request->all();
+        $data['image'] = "http://testapp/storage/app/" . Car::uploadImage($request);
+
+        Car::create($data);
         return redirect()->route('car.index');
     }
 

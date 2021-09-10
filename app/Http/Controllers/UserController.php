@@ -138,6 +138,10 @@ class UserController extends Controller
 
     public function addManager(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'pickpoint_id' => 'required|numeric'
+        ]);
         $manager = User::find($request->id);
         $manager->role = 'manager';
         $manager->pickpoint_id = $request->pickpoint_id;
