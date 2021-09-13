@@ -19,6 +19,9 @@ class ReportController extends Controller
 
     public function reportManager(Request $request)
     {
+        $request->validate([
+            'manager_id' => 'required|numeric'
+        ]);
         $title = 'manager';
         $report = Rent::where('manager_id',$request->manager_id)->get();
         return view('admin.report.show', compact('report','title'));
@@ -33,6 +36,9 @@ class ReportController extends Controller
 
     public function reportPickpoint(Request $request)
     {
+        $request->validate([
+            'pickpoint_id' => 'required|numeric'
+        ]);
         $title = 'pickpoint';
         $manager = User::where('pickpoint_id', $request->pickpoint_id)->first();
         $report = Rent::where('manager_id', $manager->id)->get();
@@ -48,6 +54,9 @@ class ReportController extends Controller
 
     public function reportCar(Request $request)
     {
+        $request->validate([
+            'car_id' => 'required|numeric'
+        ]);
         $title = 'car';
         $report = Rent::where('car_id',$request->car_id)->get();
         return view('admin.report.show', compact('report','title'));
@@ -62,6 +71,9 @@ class ReportController extends Controller
 
     public function reportClient(Request $request)
     {
+        $request->validate([
+            'client_id' => 'required|numeric'
+        ]);
         $title = 'client';
         $report = Rent::where('client_id',$request->client_id)->get();
         return view('admin.report.show', compact('report','title'));
