@@ -35,7 +35,7 @@ class User extends Authenticatable
 
     public function car()
     {
-        return $this->hasOne(Car::class);
+        return $this->hasMany(Car::class);
     }
 
     public function rent()

@@ -34,6 +34,7 @@ class ManagerController extends Controller
         {
             $car = Car::find($request->bookedcar_id);
             $car->ocupied = true;
+            $car->user_id = $request->client_id;
             $car->save();
         }
         elseif (isset($request->car_id))
