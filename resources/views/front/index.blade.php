@@ -6,6 +6,11 @@
 @section('content')
         <header class="py-5">
             <div class="container px-lg-5">
+                @if(session()->has('booked'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session()->get('booked') }}
+                    </div>
+                @endif
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
                     <div class="m-4 m-lg-5">
                         <h1 class="display-5 fw-bold">We are service for car rent</h1>
@@ -20,6 +25,7 @@
 
         <section class="pt-4">
             <div class="container px-lg-5">
+
                 <!-- Page Features-->
                 <div class="row gx-lg-5">
                     @foreach($pickpoints as $pickpoint)

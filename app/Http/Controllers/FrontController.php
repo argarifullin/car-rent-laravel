@@ -35,6 +35,6 @@ class FrontController extends Controller
         $car->booked_until = $now;
         $car->save();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('booked', 'Car has been booked successfully. You have 15 minutes to rent it. Thank you.');
     }
 }

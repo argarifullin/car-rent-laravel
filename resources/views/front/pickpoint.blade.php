@@ -43,9 +43,9 @@
                                     </transition>
                                 </div>
                                 <button class="btn btn-outline-success me-3" v-on:click="phoneVisible = !phoneVisible">@{{ phoneBtnText }}</button>
-
-                                <a :href="car.book_id"> <button class="btn btn-primary">Book</button></a>
-
+                                @auth()
+                                <a :href="car.book_id"> <button class="btn btn-primary" onclick="return confirm('Are you sure you want to book this car')"onclick="return confirm('Подтвердите удаление')">Book</button></a>
+                                @endauth
                             </div>
                         </div>
                     </div>

@@ -64,7 +64,7 @@ Route::prefix('/manager')->middleware('manager')->group(function(){
 
 Route::get('/','App\Http\Controllers\FrontController@index')->name('home');
 Route::get('/pickpoint/{id}', 'App\Http\Controllers\FrontController@pickpointShow')->name('pickpoint.show');
-Route::get('/pickpoint/car/{id}','App\Http\Controllers\FrontController@bookCar')->name('car.book');
+Route::get('/pickpoint/car/{id}','App\Http\Controllers\FrontController@bookCar')->middleware('auth')->name('car.book');
 
 Route::middleware('guest')->group(function (){
     Route::get('/register', 'App\Http\Controllers\UserController@register')->name('user.register');
